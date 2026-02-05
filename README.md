@@ -4,7 +4,7 @@
   - Click "run with liveserver"
 
 # To run backend:
-  - Open terminal on VSCode (CTRL + `)
+  - Open terminal on VSCode
   - Navigate to backend folder:
     ```bash
     # Change directory to the `backend`
