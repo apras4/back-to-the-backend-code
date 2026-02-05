@@ -11,11 +11,9 @@
     cd backend
   - Install node packages
     ```bash
-    # Change directory to the `backend`
     npm install
   - Run server:
     ```bash
-    # Change directory to the `backend`
     npx nodemon server.js
 
 # Copy and paste your MongoDB connection string in the .env file
