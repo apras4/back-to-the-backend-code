@@ -47,15 +47,25 @@ mongoose.connect(process.env.MONGODB_URI) // this is an asynchronous operation t
 // now let's create the API route that's general
 // this one posts the body, containing {title, desc, and rating} coming from our form
 
-// app.post('/api/reviews', async (req, res) => {
-//     try {
-//         console.log(req.body);
-//         const newReview = new MovieReview(req.body); // the body should contain title, description, rating
-//         const savedReview = await newReview.save();
-//         res.status(201).json(savedReview);
-//     } catch (err) {
-//         res.status(400).json({ error: err.message });
-//     }
-// });
+app.post('/api/reviews', async (req, res) => {
+    try {
+        console.log(req.body);
+        const newReview = new MovieReview(req.body); // the body should contain title, description, rating
+        const savedReview = await newReview.save();
+        res.status(201).json(savedReview);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
 
 // now let's write the API route for reading all reviews from the DB
+
+app.get('/api/reviews', async (req, res) => {
+    try{
+        const reviews = await MovieReview.find({}); // BUG if anyone was looking.. this was misspelled...
+        res.json(reviews);
+    }
+    catch(err){
+        res.status(500).json({error: err.mesage});
+    }
+})
